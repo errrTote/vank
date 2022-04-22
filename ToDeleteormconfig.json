@@ -1,0 +1,14 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "username": "root",
+  "password": "123456",
+  "port": "5432",
+  "synchronize": false,
+  "database": "vank_local",
+  "entities": ["src/**/*.entity.{ts,js}"],
+  "migrations": ["src/migrations/*.{ts,js}"],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
+}
