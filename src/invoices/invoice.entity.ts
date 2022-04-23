@@ -6,53 +6,55 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'invoices' })
 export class Invoice {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'int', default: 0 })
-  origin_id: number;
+  @Column({ name: 'origin_id', type: 'int', default: 0 })
+  originId: number;
 
-  @Column({ type: 'int' })
-  vendor_id: number;
+  @Column({ name: 'vendor_id', type: 'int' })
+  vendorId: number;
 
-  @Column({ type: 'varchar', length: 255 })
-  invoice_number: string;
+  @Column({ name: 'invoice_number', type: 'varchar', length: 255 })
+  invoiceNumber: string;
 
-  @Column({ type: 'date', nullable: true })
-  invoice_date: string;
+  @Column({ name: 'invoice_date', type: 'date', nullable: true })
+  invoiceDate: string;
 
-  @Column({ type: 'decimal' })
-  invoice_total: number;
+  @Column({ name: 'invoice_total', type: 'decimal' })
+  invoiceTotal: number;
 
-  @Column({ type: 'decimal' })
-  payment_total: number;
+  @Column({ name: 'payment_total', type: 'decimal' })
+  paymentTotal: number;
 
-  @Column({ type: 'decimal' })
-  credit_total: number;
+  @Column({ name: 'credit_total', type: 'decimal' })
+  creditTotal: number;
 
-  @Column({ type: 'int' })
-  bank_id: number;
+  @Column({ name: 'bank_id', type: 'int' })
+  bankId: number;
 
-  @Column({ type: 'date', nullable: true })
-  invoice_due_date: string;
+  @Column({ name: 'invoice_due_date', type: 'date', nullable: true })
+  invoiceDueDate: string;
 
-  @Column({ type: 'date', nullable: true })
-  payment_date: string;
+  @Column({ name: 'payment_date', type: 'date', nullable: true })
+  paymentDate: string;
 
   @Column({ type: 'varchar', length: 10 })
   currency: string;
 
   @CreateDateColumn({
+    name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  created_at: string;
+  createdAt: string;
 
   @UpdateDateColumn({
+    name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  updated_at: string;
+  updatedAt: string;
 }

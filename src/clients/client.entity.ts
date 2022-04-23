@@ -8,35 +8,37 @@ import {
 
 import { Currencies } from '../common/currencies';
 
-@Entity()
+@Entity({ name: 'clients' })
 export class Client {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 50 })
-  business_name: string;
+  @Column({ name: 'business_name', type: 'varchar', length: 50 })
+  businessName: string;
 
-  @Column({ type: 'varchar', length: 50 })
-  tax_identification_number: string;
+  @Column({ name: 'tax_identification_number', type: 'varchar', length: 50 })
+  taxIdentificationNumber: string;
 
-  @Column({ type: 'int' })
-  monthly_request: number;
+  @Column({ name: 'monthly_request', type: 'int' })
+  monthlyRequest: number;
 
   @Column({ type: 'enum', enum: Currencies, default: Currencies.clp })
   currency: Currencies;
 
-  @Column({ type: 'decimal', array: true })
-  bank_information: number[];
+  @Column({ name: 'bank_information', type: 'decimal', array: true })
+  bankInformation: number[];
 
   @CreateDateColumn({
+    name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({
+    name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  updated_at: Date;
+  updatedAt: Date;
 }

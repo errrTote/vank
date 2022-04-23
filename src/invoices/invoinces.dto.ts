@@ -5,45 +5,45 @@ export class CreateInvoinceDto {
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
-  readonly origin_id: number;
+  readonly originId: number;
 
   @IsNumber()
   @ApiProperty()
   @IsNotEmpty()
-  readonly vendor_id: number;
+  readonly vendorId: number;
 
   @IsString()
   @ApiProperty()
   @IsNotEmpty()
-  readonly invoice_number: string;
+  readonly invoiceNumber: string;
 
   @IsDateString()
   @ApiProperty()
-  readonly invoice_date: string;
+  readonly invoiceDate: string;
 
   @IsNumber()
   @ApiProperty()
-  readonly invoice_total: number;
+  readonly invoiceTotal: number;
 
   @IsNumber()
   @ApiProperty()
-  readonly payment_total: number;
+  readonly paymentTotal: number;
 
   @IsNumber()
   @ApiProperty()
-  readonly credit_total: number;
+  readonly creditTotal: number;
 
   @IsNumber()
   @ApiProperty()
-  readonly bank_id: number;
+  readonly bankId: number;
 
   @IsDateString()
   @ApiProperty()
-  readonly invoice_due_date: string;
+  readonly invoiceDueDate: string;
 
   @IsDateString()
   @ApiProperty()
-  readonly payment_date: string;
+  readonly paymentDate: string;
 
   @IsString()
   @ApiProperty()

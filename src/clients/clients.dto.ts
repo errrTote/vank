@@ -13,17 +13,17 @@ export class CreateClientDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly business_name: string;
+  readonly businessName: string;
 
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly tax_identification_number: string;
+  readonly taxIdentificationNumber: string;
 
   @IsPositive()
   @IsNotEmpty()
   @ApiProperty()
-  readonly monthly_request: number;
+  readonly monthlyRequest: number;
 
   @IsEnum(Currencies)
   @IsNotEmpty()
@@ -32,7 +32,7 @@ export class CreateClientDto {
 
   @IsArray()
   @ApiProperty({ type: [Number] })
-  readonly bank_information: number[];
+  readonly bankInformation: number[];
 }
 
 export class UpdateClientDto extends PartialType(CreateClientDto) {}

@@ -14,22 +14,22 @@ export class CronService {
     const arrayFields = row.split(',');
     if (!arrayFields) return null;
     const invoice: CreateInvoinceDto = {
-      origin_id: arrayFields[0] ? Number(arrayFields[0]) : 0,
-      vendor_id: arrayFields[1] ? Number(arrayFields[1]) : 0,
-      invoice_number: arrayFields[2] ? arrayFields[2] : '',
-      invoice_date: arrayFields[3] ? arrayFields[3] : null,
-      invoice_total: arrayFields[4] ? Number(arrayFields[4]) : 0,
-      payment_total: arrayFields[5] ? Number(arrayFields[5]) : 0,
-      credit_total: arrayFields[6] ? Number(arrayFields[6]) : 0,
-      bank_id: arrayFields[7] ? Number(arrayFields[7]) : 0,
-      invoice_due_date: arrayFields[8] ? arrayFields[8] : null,
-      payment_date: arrayFields[9] ? arrayFields[9] : null,
+      originId: arrayFields[0] ? Number(arrayFields[0]) : 0,
+      vendorId: arrayFields[1] ? Number(arrayFields[1]) : 0,
+      invoiceNumber: arrayFields[2] ? arrayFields[2] : '',
+      invoiceDate: arrayFields[3] ? arrayFields[3] : null,
+      invoiceTotal: arrayFields[4] ? Number(arrayFields[4]) : 0,
+      paymentTotal: arrayFields[5] ? Number(arrayFields[5]) : 0,
+      creditTotal: arrayFields[6] ? Number(arrayFields[6]) : 0,
+      bankId: arrayFields[7] ? Number(arrayFields[7]) : 0,
+      invoiceDueDate: arrayFields[8] ? arrayFields[8] : null,
+      paymentDate: arrayFields[9] ? arrayFields[9] : null,
       currency: arrayFields[10] ? arrayFields[10] : '',
     };
     return invoice;
   }
 
-  @Cron('0 0 9 * * *', { timeZone: 'America/Santiago' })
+  @Cron('0 0 9 * * *', { timeZone: 'America/Argentina/Buenos_Aires' })
   async InvoicesCron() {
     this.logger.debug(
       'InvoicesCron called every day at 9:00AM America/Santiago',

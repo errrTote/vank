@@ -30,7 +30,7 @@ export class InvoicesService {
   }
 
   findByOriginId(id: number): Promise<Invoice> {
-    return this.invoicesRepository.findOne({ where: { origin_id: id } });
+    return this.invoicesRepository.findOne({ where: { originId: id } });
   }
 
   create(payload: CreateInvoinceDto) {
@@ -39,8 +39,8 @@ export class InvoicesService {
   }
 
   async tryToCreate(payload: CreateInvoinceDto) {
-    const { origin_id } = payload;
-    const exist = await this.findByOriginId(origin_id);
+    const { originId } = payload;
+    const exist = await this.findByOriginId(originId);
     if (exist) return;
     await this.create(payload);
   }
