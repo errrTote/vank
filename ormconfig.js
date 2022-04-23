@@ -9,9 +9,9 @@ module.exports = {
     migrationsDir: 'src/migrations',
   },
   ssl:
-    process.env.ENV !== 'production'
-      ? false
-      : {
+    process.env.NODE_ENV === 'production'
+      ? {
           rejectUnauthorized: false,
-        },
+        }
+      : false,
 };
