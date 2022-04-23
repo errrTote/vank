@@ -18,6 +18,7 @@ import config from './config';
           entities: ['dist/**/*.entity.js'],
           migrations: ['dist/migrations/**/*.js'],
           ssl: {
+            require: true,
             rejectUnauthorized: false,
           },
         }),
