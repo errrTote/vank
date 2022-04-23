@@ -17,6 +17,9 @@ import config from './config';
         Object.assign(await getConnectionOptions(), {
           entities: ['dist/**/*.entity.js'],
           migrations: ['dist/migrations/**/*.js'],
+          ssl: {
+            rejectUnauthorized: false,
+          },
         }),
     }),
     InvoicesModule,
