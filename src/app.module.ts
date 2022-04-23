@@ -15,6 +15,7 @@ import config from './config';
     TypeOrmModule.forRootAsync({
       useFactory: async () =>
         Object.assign(await getConnectionOptions(), {
+          ssl: false,
           entities: ['dist/**/*.entity.js'],
           migrations: ['dist/migrations/**/*.js'],
         }),
