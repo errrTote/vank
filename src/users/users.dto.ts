@@ -4,12 +4,24 @@ import {
   IsPositive,
   IsEnum,
   IsArray,
+  IsEmail,
 } from 'class-validator';
 import { PartialType, ApiProperty } from '@nestjs/swagger';
 
 import { Currencies } from '../common/currencies';
 
-export class CreateClientDto {
+export class CreateUserDto {
+  @IsString()
+  @IsNotEmpty()
+  @IsEmail()
+  @ApiProperty()
+  readonly email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  readonly password: string;
+
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
@@ -35,4 +47,4 @@ export class CreateClientDto {
   readonly bankInformation: number[];
 }
 
-export class UpdateClientDto extends PartialType(CreateClientDto) {}
+export class UpdateUserDto extends PartialType(CreateUserDto) {}

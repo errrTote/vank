@@ -8,10 +8,19 @@ import {
 
 import { Currencies } from '../common/currencies';
 
-@Entity({ name: 'clients' })
-export class Client {
+@Entity({ name: 'users' })
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({ type: 'varchar', length: 50, unique: true })
+  email: string;
+
+  @Column({ type: 'int', default: 1 })
+  role: string;
+
+  @Column({ type: 'varchar', length: 255 })
+  password: string;
 
   @Column({ name: 'business_name', type: 'varchar', length: 50 })
   businessName: string;

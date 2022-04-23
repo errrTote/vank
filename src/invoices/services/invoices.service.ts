@@ -34,8 +34,8 @@ export class InvoicesService {
   }
 
   create(payload: CreateInvoinceDto) {
-    const newClient = this.invoicesRepository.create(payload);
-    return this.invoicesRepository.save(newClient);
+    const newUser = this.invoicesRepository.create(payload);
+    return this.invoicesRepository.save(newUser);
   }
 
   async tryToCreate(payload: CreateInvoinceDto) {

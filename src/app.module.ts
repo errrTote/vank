@@ -1,10 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
+import { ConfigModule } from '@nestjs/config';
+
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { InvoicesModule } from './invoices/invoices.module';
-import { ClientsModule } from './clients/clients.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import config from './config';
 
 @Module({
   imports: [
@@ -16,7 +20,12 @@ import { ClientsModule } from './clients/clients.module';
         }),
     }),
     InvoicesModule,
-    ClientsModule,
+    UsersModule,
+    AuthModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [config],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

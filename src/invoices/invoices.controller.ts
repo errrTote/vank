@@ -6,13 +6,15 @@ import {
   Param,
   ParseIntPipe,
   NotFoundException,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import { InvoicesService } from './services/invoices.service';
 import { CreateInvoinceDto } from './invoinces.dto';
-
+import { AuthGuard } from '@nestjs/passport';
 @ApiTags('invoices')
+@UseGuards(AuthGuard('jwt'))
 @Controller('invoices')
 export class InvoicesController {
   constructor(private invoicesService: InvoicesService) {}
