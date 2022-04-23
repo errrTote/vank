@@ -11,32 +11,35 @@ export class Invoice {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'int', default: 0 })
+  origin_id: number;
+
   @Column({ type: 'int' })
   vendor_id: number;
 
   @Column({ type: 'varchar', length: 255 })
   invoice_number: string;
 
-  @Column({ type: 'date' })
-  invoice_date: Date;
+  @Column({ type: 'date', nullable: true })
+  invoice_date: string;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'decimal' })
   invoice_total: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'decimal' })
   payment_total: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'decimal' })
   credit_total: number;
 
   @Column({ type: 'int' })
   bank_id: number;
 
-  @Column({ type: 'date' })
-  invoice_due_date: Date;
+  @Column({ type: 'date', nullable: true })
+  invoice_due_date: string;
 
-  @Column({ type: 'date' })
-  payment_date: Date;
+  @Column({ type: 'date', nullable: true })
+  payment_date: string;
 
   @Column({ type: 'varchar', length: 10 })
   currency: string;
@@ -45,11 +48,11 @@ export class Invoice {
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  created_at: Date;
+  created_at: string;
 
   @UpdateDateColumn({
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  updated_at: Date;
+  updated_at: string;
 }
