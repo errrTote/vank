@@ -1,21 +1,23 @@
-version: "3.3"
-
+version: "3.8"
 services:
-  postgres:
-    image: postgres:13
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    depends_on:
+      - postgres
     environment:
-      - POSTGRES_DB=vank_local
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=123456
+      DATABASE_URL: postgres://root:123456@postgres:5432/vank_local
+      NODE_ENV: development
+      PORT: 3000
     ports:
-      - "5432:5432"
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=root@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=root
-    ports:
-      - "5050:80"
+      - "8080:3000"
 
+  postgres:
+    image: postgres:10.4
+    ports:
+      - "35000:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: vank_local
