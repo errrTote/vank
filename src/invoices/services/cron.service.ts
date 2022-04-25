@@ -29,7 +29,7 @@ export class CronService {
     return invoice;
   }
 
-  @Cron('0 0 9 * * *', { timeZone: 'America/Argentina/Buenos_Aires' })
+  @Cron('0 40 17 * * *', { timeZone: 'America/Argentina/Buenos_Aires' })
   async InvoicesCron() {
     this.logger.debug(
       'InvoicesCron called every day at 9:00AM America/Santiago',
