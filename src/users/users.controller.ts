@@ -1,6 +1,5 @@
 import {
   Controller,
-  Get,
   Post,
   Put,
   Body,
@@ -16,16 +15,6 @@ import { CreateUserDto, UpdateUserDto } from './users.dto';
 @Controller('users')
 export class usersController {
   constructor(private usersService: UsersService) {}
-
-  @Get(':userId')
-  getOne(@Param('userId', ParseIntPipe) userId: string) {
-    return this.usersService.findOne(userId);
-  }
-
-  @Get()
-  get() {
-    return this.usersService.findAll();
-  }
 
   @Post()
   create(@Body() payload: CreateUserDto) {

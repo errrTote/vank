@@ -1,7 +1,7 @@
-import { InvoiceEntity } from './invoice.entity';
+import { Invoice } from './invoice.entity';
 
 describe('InvoiceEntity', () => {
   it('should be defined', () => {
-    expect(new InvoiceEntity()).toBeDefined();
+    expect(new Invoice()).toBeDefined();
   });
 });

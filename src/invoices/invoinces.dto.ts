@@ -1,4 +1,12 @@
-import { IsString, IsNotEmpty, IsNumber, IsDateString } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  IsDateString,
+  IsOptional,
+  IsPositive,
+  Min,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateInvoinceDto {
@@ -48,4 +56,23 @@ export class CreateInvoinceDto {
   @IsString()
   @ApiProperty()
   readonly currency: string;
+}
+
+export class FilterInvoicesDto {
+  @IsOptional()
+  @IsPositive()
+  pageSize: number;
+
+  @IsOptional()
+  @Min(0)
+  page: number;
+
+  @IsOptional()
+  start_date: string;
+
+  @IsOptional()
+  end_date: string;
+
+  @IsOptional()
+  vendor_id: string;
 }

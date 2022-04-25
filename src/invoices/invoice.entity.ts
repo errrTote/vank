@@ -6,6 +6,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Expose } from 'class-transformer';
+
 @Entity({ name: 'invoices' })
 export class Invoice {
   @PrimaryGeneratedColumn()
@@ -25,6 +27,11 @@ export class Invoice {
 
   @Column({ name: 'invoice_total', type: 'decimal' })
   invoiceTotal: number;
+
+  @Expose()
+  get invoiceTotalProcesed(): number {
+    return this.invoiceTotal * 100;
+  }
 
   @Column({ name: 'payment_total', type: 'decimal' })
   paymentTotal: number;

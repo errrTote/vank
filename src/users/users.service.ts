@@ -33,7 +33,8 @@ export class UsersService {
     const newUser = this.usersRepository.create(payload);
     const hashPassword = await bcrypt.hash(newUser.password, 10);
     newUser.password = hashPassword;
-    return this.usersRepository.save(newUser);
+    this.usersRepository.save(newUser);
+    return { message: 'Created!' };
   }
 
   async update(id: string, payload: UpdateUserDto) {

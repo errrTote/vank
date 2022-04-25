@@ -36,8 +36,10 @@ export class User {
   @Column({ type: 'enum', enum: Currencies, default: Currencies.clp })
   currency: Currencies;
 
-  @Column({ name: 'bank_information', type: 'decimal', array: true })
-  bankInformation: number[];
+  @Column({ name: 'bank_information', type: 'decimal' })
+  bankInformation: number;
+  // @Column({ name: 'bank_information', type: 'decimal', array: true })
+  // bankInformation: number[];
 
   @CreateDateColumn({
     name: 'created_at',
